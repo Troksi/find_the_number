@@ -15,6 +15,4 @@
 
 ## Запуск:
 
-```bash
-index.html
-```
+[index.html](https://troksi.github.io/find_the_number/)
