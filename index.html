@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Найди число</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/game.js" defer></script>
+</head>
+
+<body>
+    <div id="game-container">
+        <div id="game-ui-start">
+            <div id="start-end-block">
+                <h1>Игра: Найди число</h1>
+                <button id="start-button">▶ Старт</button>
+            </div>
+        </div>
+
+        <div id="game-ui" style="display: none;">
+            <h1>Найди число: <span id="target-number"></span></h1>
+            <div id="timer">Осталось: <span id="time">60</span> сек</div>
+            <div id="score">Очки: <span id="points">0</span></div>
+            <div id="grid"></div>
+        </div>
+
+        <div id="end-message" style="display: none;">
+            <div id="start-end-block">
+                <p>⏰ Время вышло!</p><b>
+                    <p>Ваш счёт: <span id="final-score"></span></p>
+                    <button onclick="location.reload()">🔁 Сыграть снова</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

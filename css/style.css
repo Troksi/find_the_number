@@ -1,0 +1,87 @@
+body {
+  font-family: sans-serif;
+  background: #FFC065;
+  text-align: center;
+  padding: 20px;
+}
+
+#grid {
+  margin: 20px auto;
+  display: grid;
+  gap: 10px;
+  max-width: 90vw;
+}
+
+.tile {
+  background-color: #fff;
+  color: #000;
+  padding: 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.3s, opacity 0.3s;
+  user-select: none;
+}
+
+#game-ui-start {
+  padding: 250px;
+}
+
+#start-end-block {
+  background-color: #fff;
+  color: #000;
+  border-radius: 8px;
+  padding-block: 25px;
+}
+
+#end-message {
+  color: #000;
+  font-size: 1.5rem;
+  border-radius: 8px;
+  padding: 250px;
+}
+
+.hidden-text {
+  -webkit-animation: blink1 3s linear infinite;
+  animation: blink1 3s linear infinite;
+}
+@-webkit-keyframes blink1 {
+  0% { color: rgba(34, 34, 34, 1); }
+  50% { color: rgba(34, 34, 34, 0); }
+  100% { color: rgba(34, 34, 34, 1); }
+}
+@keyframes blink1 {
+  0% { color: rgba(34, 34, 34, 1); }
+  50% { color: rgba(34, 34, 34, 0); }
+  100% { color: rgba(34, 34, 34, 1); }
+}
+
+.rotate {
+  animation: tilt-shaking 1s infinite linear;
+}
+
+@keyframes tilt-shaking {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(0eg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.shrink-grow {
+  animation: scalePulse 1s infinite;
+}
+
+@keyframes scalePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(0.5); }
+}
+
+.fade-in-out {
+  animation: fadeInOut 1s infinite;
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
