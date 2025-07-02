@@ -4,7 +4,7 @@ class FindTheNumberGame {
     this.score = 0;
     this.level = 1;
     this.isTimeOver;
-    this.timerInterval = null;
+    this.timer = null;
     this.gridSizes = [
       [2, 3],
       [3, 4],
@@ -28,24 +28,40 @@ class FindTheNumberGame {
 
   }
 
-  startGame() {
+  startGame(isIntervalMod = true) {
     $('#game-ui-start').hide();
     $('#game-ui').show();
 
-    this.updateUI();
     this.generateRound();
     this.isTimeOver = false;
-    this.timerInterval = setInterval(() => {
-      if (this.time > 0) this.time--;      
-      this.$time.text(this.time);
-      if (this.time <= 0) this.isTimeOver = true;
-    }, 1000);
+    
+    if (isIntervalMod) this.intervalGameBehavior();
+    else this.endlessGameBehavior();
+    
+    this.updateUI();
     this.applyColorScheme();
     
   }
 
+  intervalGameBehavior() {
+    this.time = 60;
+    this.timer = setInterval(() => {
+      if (this.time > 0) this.time--;
+      this.$time.text(this.time);
+      if (this.time <= 0) this.isTimeOver = true;
+    }, 1000);
+  }
+  
+  endlessGameBehavior() {
+    this.time = 0;
+    this.timer = setInterval(() => {
+      if (!this.isTimeOver) this.time++;
+      this.$time.text(this.time);
+    }, 1000);
+  }
+
   endGame() {
-    clearInterval(this.timerInterval);
+    clearInterval(this.timer);
     this.$grid.empty();
     $('#game-ui').hide();
     $('#end-message').show();
@@ -156,5 +172,12 @@ $(document).ready(() => {
 
   $('#start-button').on('click', () => {
     game.startGame();
+  });
+  $('#start-button-endless').on('click', () => {
+    game.startGame(false);
+  });
+  
+  $('#end-button').on('click', () => {
+    game.endGame();
   });
 });
